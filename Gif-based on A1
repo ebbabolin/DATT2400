@@ -1,0 +1,54 @@
+void setup () {
+  size(1000, 1000);
+
+  rectMode(CENTER);
+
+  frameRate(10);
+  noFill();
+}
+
+void draw() {
+
+
+  // fill(random(255), random(255), random(255));
+
+
+  background(0);
+
+  float x = random(500) ;
+
+  float red = random(255);
+  float blue = random(255);
+  float green = random(255);
+  
+ 
+
+
+  for (int i  = 0; i < x; i++) {
+    stroke(blue, green, red);
+    //strokeWeight(random(10));
+    float randomsize = random(500);
+    float randomspeed = random(3);
+      float sv = sin(randomspeed*0.2);
+    pushMatrix();
+    translate(width/2, height/2);
+    rotate(frameCount*sv);
+    //ellipse(0, 0, randomsize, randomsize);
+    //line(0, 0, randomsize, randomsize);
+    line(0, 0, randomsize, randomsize);
+
+
+    popMatrix();
+
+if((frameCount*sv)>= TWO_PI & sv>=0){
+  noLoop();
+  }
+
+    //noLoop();
+  }
+}
+
+
+//void mouseMoved (){
+//redraw();
+//}
