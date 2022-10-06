@@ -1,0 +1,39 @@
+void setup () {
+  size(1000, 1000);
+  background(255);
+  rectMode(CENTER);
+  
+  frameRate(4);
+}
+
+void draw() {
+  
+  
+ // fill(random(255), random(255), random(255));
+  
+
+  background(0);
+
+  
+  
+ for(int i  = 0; i < 10; i++){
+ //fill(random(255), random(255), random(255));
+ noFill();
+ stroke(random(255), random(255), random(255));
+  float randomsize =random(500);
+      pushMatrix();
+      translate(width/2, height/2);
+      rotate(frameCount*0.1);
+   rect(0, 0, randomsize, randomsize);
+   popMatrix();
+  
+ 
+  
+ //noLoop();
+  
+}
+}
+
+//void mouseMoved (){
+  //redraw();
+//}
