@@ -1,0 +1,70 @@
+float x = 0;
+float inc = TWO_PI/25.0;
+
+//setup of canvas
+void setup () {
+  size(1000, 1000);
+//the number of frames to display per second
+  frameRate(6);
+    noFill();
+}
+
+//create function where to draw on the canvas
+void draw() {
+  
+  //backgroun colour of the canvas
+  background(0);
+
+  //devide the colour up into green, red, blue and make each colour random.
+  float red = random(255);
+  float blue = random(255);
+  float green = random(255);
+
+  //loop of the drawing
+  for (int i  = 0; i < 200; i++) {
+    //give the stroke a colour. use of the random value of each colour of the float above, all the lines in the drawing get the same random value, together as a grouop
+    stroke(blue, green, red);
+    //or active the line underneath and each stroke in the drawing get a random value
+    //stroke(random(255), random(255), random(255));
+    //make the line in the drawing a random size between 0-1000
+    //float randomsize = random(1000);
+    //make the speed if the rotation of the line random between 0-10
+    float randomspeed = random(100);
+    //make the poisiton of the line random between 10-1000
+    float randomposition = random(1000);
+    //incoorate sin that talculates the sine of an angle
+    float randomsize =  50 + (sin(x) * 40);
+    x += inc;
+    pushMatrix();
+    //the position of the line is measured from the center of the canvas
+    translate(width/2, height/2);
+    //the rotation of the line around the poisition * the random value of the speed
+    rotate(frameCount*randomspeed);
+    //the line has random values based on the floats above
+    line(randomposition, randomposition, randomsize, randomsize);
+    
+    //if the postion of the line is closer to the center the weight of the stroke is thicker
+
+    if ( randomposition < 100) {
+      strokeWeight(5);
+      // if the powition of the line is furhter away from the center of the canvas the stroke weight is thinner
+    } else {
+      strokeWeight(1);
+    }
+
+    popMatrix();
+
+
+    //when activating the noloop function, the drawing (loop) will only run once
+    //noLoop();
+    
+
+  }
+  //Saves each frame
+     // saveFrame("###_A1.jpg");
+}
+
+// if the noloop function is activated and the moseMoved function, the loop/drawing will run when the mouse is moved on the canvas. The users interaction is in controll over the loop.
+//void mousePressed (){
+//redraw();
+//}
