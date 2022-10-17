@@ -65,6 +65,6 @@ void draw() {
 }
 
 // if the noloop function is activated and the moseMoved function, the loop/drawing will run when the mouse is moved on the canvas. The users interaction is in controll over the loop.
-//void mousePressed (){
+//void mouseMoved (){
 //redraw();
 //}
