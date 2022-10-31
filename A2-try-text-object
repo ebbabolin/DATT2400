@@ -1,0 +1,49 @@
+
+PFont Font;
+float x;
+int num = 0;
+
+String[] headlines = {
+  "This is my A2 PROJECT for DATT2400",
+};
+void setup() {
+  size(600, 600);
+  Font = createFont("ARIAL BLACK", 32); 
+  textFont(Font);
+  
+  x = width;
+   
+  }
+
+void draw (){
+  background(255, 247, 240);
+  
+  animatedtext mytext = new animatedtext();  
+  
+  mytext.style_text();
+  mytext.mover();
+  mytext.write();
+
+}
+
+class animatedtext{
+  float speed =  5;
+  
+void write(){
+    text(headlines[num], x, height/2); 
+  
+}
+void style_text(){
+  fill(245, 155, 66);
+  textAlign(LEFT);
+  textSize(70);
+  
+}
+ void mover(){
+    x = x- speed;
+  }
+}
+
+
+  
+    
