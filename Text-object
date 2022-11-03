@@ -4,7 +4,7 @@ float x;
 int num = 0;
 
 String[] headlines = {
-  "This is my A2 PROJECT for DATT2400",
+  "THIS IS TEXT",
 };
 void setup() {
   size(600, 600);
