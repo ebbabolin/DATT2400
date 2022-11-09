@@ -1,0 +1,122 @@
+//create grid
+//fill every other square with color, rect
+//small squares
+
+pink[]black;
+
+int cols = 20;
+int rows = 20;
+
+int stepx;
+int stepy;
+
+int num = cols*rows;
+
+void setup(){
+  size(600,600);  
+
+  
+  stepx = width / cols;
+  stepy = height / rows;
+  ellipseMode(CENTER);
+  
+  black = new pink[num];
+  
+   for (int i = 0; i < num; i++) {
+
+
+    float x = i%num%cols;
+    float y = i%num/cols;
+
+  black[i] = new pink(x*stepx, y*stepy);
+
+}
+}
+
+
+void draw(){
+//fill(0);
+//rect(0,0,600,600);
+background(0);
+
+  pushMatrix();
+  translate(stepx/2,stepy/2);
+    for (int i = 0; i < num; i++) {
+     strokeWeight(map(sin((i*0.09)+frameCount*0.1), -1, 1, 0, 4));
+    black[i].drawsquare();
+   
+    
+  }
+  popMatrix();
+
+}
+
+class pink {
+float x;
+float y;
+float w;
+float h; 
+
+float rotate = random(0.040, 0.1);
+  
+float start;
+float position = 0;
+
+float speed =  15;
+   
+  int sel = int(random(3));
+  
+pink(float x, float y){
+   this.x = x;
+   this.y = y;
+   //this.w = w;
+   //this.h = h;
+}
+
+void drawsquare(){
+  
+if (start < TWO_PI) {
+      start+=rotate;
+    }
+
+if (sel == 0) {
+
+      pushMatrix();
+      translate(x, y);
+
+
+      rotate(start);
+      rect(0, 0, stepx, stepy);
+      
+     fill(255);
+      popMatrix();
+    }
+
+if (sel == 1) {
+   pushMatrix();
+      translate(x, y);
+  
+      rotate(start);
+      rect(0, 0, stepx, stepy);
+      
+     fill(240,55,23);
+      popMatrix();
+    }
+
+if (sel == 2) {
+   pushMatrix();
+      translate(x, y);
+  
+      rotate(start);
+      rect(0, 0, stepx, stepy);
+      
+     fill(244,155,203);
+      popMatrix();
+    }
+
+
+
+
+ 
+}
+}
