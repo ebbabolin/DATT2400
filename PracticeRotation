@@ -1,0 +1,41 @@
+void setup(){
+  size(500,500);
+ ellipseMode(CENTER);
+ // fill(217, 85, 237
+ noFill();
+  stroke(217, 85, 237);
+}
+
+float size = 100;
+
+float position = 0;
+
+float rt = 0;
+
+int num = 20;
+
+float sv = sin(rt*0.01);
+
+void draw(){
+  background(237, 199, 85);
+  
+  for(int i = 0; i < num; i++){
+    
+  sv = sin(rt*0.01);
+  pushMatrix();
+  translate(width/2, height/2);
+  rotate(radians(rt+(i*sv)*15));
+  ellipse(-position-(i*10),-position+(i*10), size,size);
+  popMatrix();
+  }
+  
+  
+
+  
+  rt = rt + 2;
+  
+  if(radians(rt)>= TWO_PI & sv>=0){
+    //noLoop();
+  }
+ // saveFrame("###_out.png");
+}
