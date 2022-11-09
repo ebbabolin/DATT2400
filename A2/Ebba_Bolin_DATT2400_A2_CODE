@@ -1,0 +1,115 @@
+
+//creating an array of multiple objects
+pink[]black;
+
+//creating a grid
+int cols = 30;
+int rows = 30;
+
+int stepx;
+int stepy;
+//number of objects
+int num = cols*rows*50;
+
+//setting up the canvas
+void setup(){
+  size(600,600);  
+
+  //difining the step sixe on the grid
+  stepx = width / cols;
+  stepy = height / rows;
+  
+//the number of objects in the created array
+
+  black = new pink[num];
+  
+  //
+   for (int i = 0; i < num; i++) {
+
+//x and y position 
+    float x = i%num%cols;
+    float y = i%num/cols;
+
+ black[i] = new pink(x,y,stepx,stepy);
+}
+}
+
+
+void draw(){ 
+  
+  //background color
+  background(255);
+  pushMatrix();
+  translate(height/2,0);
+  
+  //draw objects at each index of array
+    for (int i = 0; i < num; i++) {
+      
+ //stroke weight on the object      
+//strokeWeight((map (sin((stepx*)+(stepy*)*frameCount*0.0001), -1, 1, 1, 2)));
+  strokeWeight(map(sin((i*0.01)), -1, 1, 0, 2));
+  //call and draw the object
+    black[i].drawsquare();
+    black[i].move();
+  }
+popMatrix();
+//save the frame
+//saveFrame("###_out.png");
+}
+
+class pink {
+  //variables - position and size  
+float x;
+float y;
+float w;
+float h; 
+
+//howfast/slow the object rotation 
+float rotate = random(0.05, 0.2);
+  
+
+//float start = sin(random(50));
+float start;
+  
+//construct the object  
+  
+pink(float x, float y, float w, float h){
+   this.x = x;
+   this.y = y;
+   this.w = w;
+   this.h = h;
+}
+
+void drawsquare(){
+  
+ //set up style for the obejct
+ stroke(0);
+  pushMatrix();
+  translate(x, y);
+  rotate(start);
+  //the object
+  line(stepy,0,stepx,0);
+
+  popMatrix();
+//style for second object
+   stroke(159, 43, 104);
+  pushMatrix();
+  translate(x, y);
+  rotate(start);
+  //the object
+   line(0,stepx, 0,stepy);
+  popMatrix();
+ 
+
+ 
+}
+ void move(){
+     //rotate the objct 360 degrees, one loop 
+   if (start < TWO_PI) {
+      start+=rotate;
+    } 
+    
+  
+  }
+
+}
